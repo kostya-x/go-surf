@@ -71,9 +71,8 @@ gulp.task('scripts', () => {
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(rigger())
-		.pipe(concat('master.js'))
 		.pipe(uglify())
-		.pipe(sourcemaps.write())
+		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('build/js'))
 		.pipe(browserSync.reload({stream: true}));
 });
